@@ -70,7 +70,7 @@ public class RangeSlider extends JSlider implements _RangeSlider {
 	}
 
 	@Override
-	public void setBSup(int bsup) throws Exception {
+	public void setBSup(int bsup) {
 		if (bsup <= maximum && bsup >= binf) {
 			this.bsup = bsup;
 		}
@@ -83,7 +83,7 @@ public class RangeSlider extends JSlider implements _RangeSlider {
 	}
 
 	@Override
-	public void setBInf(int binf) throws Exception {
+	public void setBInf(int binf) {
 		if (binf >= minimum && binf <= bsup) {
 			this.binf = binf;
 		}
