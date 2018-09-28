@@ -1,21 +1,26 @@
 package ui;
 
-public class RangeSlider implements _RangeSlider{
-	
+import javax.swing.JSlider;
+
+public class RangeSlider extends JSlider implements _RangeSlider {
+
 	private int maximum;
 	private int minimum;
 	private int bsup;
 	private int binf;
-	
-	public RangeSlider(int max, int min, int bsup, int binf){
+
+	public RangeSlider(int max, int min, int bsup, int binf) throws Exception {
+		if (min > binf || binf > bsup || bsup > max) {
+			throw new Exception("RangeSlider couldn't be create");
+		}
 		this.maximum = max;
 		this.minimum = min;
 		this.bsup = bsup;
-		this.binf = binf;	
+		this.binf = binf;
 	}
-	
-	public RangeSlider(int max, int min){
-		this(max, min, max, min);	
+
+	public RangeSlider(int max, int min) throws Exception {
+		this(max, min, max, min);
 	}
 
 	@Override
@@ -32,53 +37,61 @@ public class RangeSlider implements _RangeSlider{
 	public int getBSup() {
 		return bsup;
 	}
-	
+
 	@Override
 	public int getBInf() {
 		return binf;
 	}
-	
+
 	@Override
 	public void setMaximum(int max) {
-		if(max > this.minimum){
-			this.maximum = max;	
-		}
-		else {
-			//TODO: raise an exception
-			System.out.println("Max < Min");
+		if (max > minimum) {
+			this.maximum = max;
+			if (bsup > max) {
+				bsup = max;
+			}
+			if (binf > max) {
+				binf = max;
+			}
 		}
 	}
 
 	@Override
 	public void setMinimum(int min) {
-		if(min < this.maximum){
-			this.minimum = min;	
-		}
-		else {
-			//TODO: raise an exception
-			System.out.println("Min > Max");
+		if (min < maximum) {
+			this.minimum = min;
+			if (bsup < min) {
+				bsup = min;
+			}
+			if (binf < min) {
+				binf = min;
+			}
 		}
 	}
 
 	@Override
-	public void setBSup(int bsup) {
-		if(bsup <= this.maximum && bsup >= this.minimum && bsup >= this.binf){
+	public void setBSup(int bsup) throws Exception {
+		if (bsup <= maximum && bsup >= binf) {
 			this.bsup = bsup;
 		}
-		else {
-			//TODO: raise an exception
-			System.out.println("bsup > Max or bsup < Min or bsup < binf");
+		if (bsup > maximum) {
+			this.bsup = maximum;
+		}
+		if (bsup < binf) {
+			this.bsup = binf;
 		}
 	}
 
 	@Override
-	public void setBInf(int binf) {
-		if(binf <= this.maximum && binf >= this.minimum && binf <= this.bsup){
+	public void setBInf(int binf) throws Exception {
+		if (binf >= minimum && binf <= bsup) {
 			this.binf = binf;
 		}
-		else {
-			//TODO: raise an exception
-			System.out.println("binf > Max or binf < Min or binf < bsup");	
+		if (binf < minimum) {
+			this.binf = minimum;
+		}
+		if (binf > bsup) {
+			this.binf = bsup;
 		}
 	}
 }
