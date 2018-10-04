@@ -139,6 +139,34 @@ public class RangeSliderUI extends BasicSliderUI {
         }  
     }    
 
+	public void paintTrack(Graphics g) {
+		// Draw track.
+		super.paintTrack(g);
+
+		Rectangle trackBounds = trackRect;
+
+		
+			int lowerX = thumbRect.x + (thumbRect.width / 2);
+			int upperX = upperThumbRect.x + (upperThumbRect.width / 2);
+
+			// Determine track position.
+			int cy = (trackBounds.height / 2) - 2;
+
+			// Save color and shift position.
+			Color oldColor = g.getColor();
+			g.translate(trackBounds.x, trackBounds.y + cy);
+
+			// Draw selected range.
+			g.setColor(rangeColor);
+			for (int y = 0; y <= 3; y++) {
+				g.drawLine(lowerX - trackBounds.x, y, upperX - trackBounds.x, y);
+			}
+
+			// Restore position and color.
+			g.translate(-trackBounds.x, -(trackBounds.y + cy));
+			g.setColor(oldColor);
+	}	
+	
     public void paintLowerThumb(Graphics g)  {
     		Rectangle knobBounds = thumbRect;
         int w = knobBounds.width;
