@@ -23,6 +23,7 @@ public class Main extends JPanel {
     public static void main(String[] args) {
     	
     	
+    		
     		RangeSlider rangeSlider = new RangeSlider();
     		
     		rangeSlider.setSize(1000,700);
@@ -47,6 +48,11 @@ public class Main extends JPanel {
         frame.pack();
         frame.setVisible(true);
         
+        rangeSlider.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                RangeSlider slider = (RangeSlider) e.getSource();
+            }
+        });
     }
 }
 
