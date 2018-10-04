@@ -291,6 +291,7 @@ public class RangeSliderUI extends BasicSliderUI {
 	public void setUpperThumbLocation(int x, int y)  {
 		Rectangle upperUnionRect = new Rectangle();
 		upperUnionRect.setBounds( thumbRect );
+
 		
 		upperThumbRect.setLocation( x, y );
 		
@@ -421,8 +422,8 @@ public class RangeSliderUI extends BasicSliderUI {
                 
 				thumbLeft = Math.max(thumbLeft, trackLeft - halfThumbWidth);
 				thumbLeft = Math.min(thumbLeft, trackRight - halfThumbWidth);
-				int thumbRight = thumbLeft + thumbRect.width;
-				thumbMiddle = thumbLeft + halfThumbWidth;
+				int thumbRight = thumbLeft;
+				thumbMiddle = thumbRight + halfThumbWidth;
 
 				if (valueForXPosition(thumbLeft) > slider.getValue()) {
 					setUpperThumbLocation(thumbRight, upperThumbRect.y);
