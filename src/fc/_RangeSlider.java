@@ -1,5 +1,4 @@
-package ui;
-
+package fc;
 
 public interface _RangeSlider {
 	
@@ -7,16 +6,16 @@ public interface _RangeSlider {
 	
 	int getMinimum();
 	
-	int getBSup();
+	int getTopValue();
 	
-	int getBInf();
+	int getValue();
 	
 	void setMaximum(int max);
 	
 	void setMinimum(int min);
 	
-	void setBSup(int val);
+	void setTopValue(int val);
 	
-	void setBInf(int val);
+	void setValue(int val);
 	
 }

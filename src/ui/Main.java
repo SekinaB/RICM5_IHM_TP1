@@ -2,6 +2,8 @@ package ui;
 
 import javax.swing.JFrame;
 
+import fc.RangeSlider;
+
 public class Main {
 	public static void main(String args[]) {
 		JFrame frame = new JFrame();
