@@ -1,16 +1,10 @@
 package homefinder;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import ui.RangeSlider;
 
 public class Main {
