@@ -8,7 +8,7 @@ public class RangeSlider extends JSlider {
 		setOrientation(HORIZONTAL);
 	}
 	
-	public RangeSlider(int max, int min) throws Exception {
+	public RangeSlider(int max, int min) {
 		super(min,max);
 		setOrientation(HORIZONTAL);
 	}
